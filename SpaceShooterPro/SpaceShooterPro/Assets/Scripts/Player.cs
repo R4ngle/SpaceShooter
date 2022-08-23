@@ -5,7 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     
-    private float _speed = 10;
+    private float _speed = 3.5f;
+    [SerializeField]
+    private GameObject _laserPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +16,38 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
-      float horizontalInput = Input.GetAxis("Horizontal")
-      float verticaInput   = Input.GetAxis("Vertical")
-            transform.Translate(Vector3.left * _speed * Time.deltaTime);
-        Vector3 direction = new Vector3(horizionta)
+    {
+        CalculateMovement();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(_laserPrefab);
+
+        }
+    }
+void CalculateMovement()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticaInput = Input.GetAxis("Vertical");
+
+        Vector3 direction = new Vector3(horizontalInput, verticaInput, 0);
+
+        transform.Translate(direction * _speed * Time.deltaTime);
+
+        if (transform.position.y >= 0)
+        {
+            transform.position = new Vector3(transform.position.x, 0, 0);
+        }
+        else if (transform.position.y <= -3.8f)
+        {
+            transform.position = new Vector3(transform.position.x, 3.8f, 0);
+        }
+        if (transform.position.x > 11.3f)
+        {
+            transform.position = new Vector3(-11.3f, transform.position.y, 0);
+        }
+        else if (transform.position.x < -11.3f)
+        {
+            transform.position = new Vector3(11.3f, transform.position.y, 0);
+        }
     }
 }
