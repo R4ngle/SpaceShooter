@@ -17,12 +17,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CalculateMovement();
+       CalculateMovement();
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(_laserPrefab);
+            Instantiate(_laserPrefab, transform.position, Quaternion.identity);
 
         }
+       
+      
     }
 void CalculateMovement()
     {
