@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 7067374}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _laserPrefab: {fileID: 1028077322249164738, guid: 121f6dd295e4a704f85f8996ddc4b807, type: 3}
+  fireRate: 0.3
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
